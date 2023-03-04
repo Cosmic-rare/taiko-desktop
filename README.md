@@ -8,3 +8,11 @@ Still in development. Works best with Chrome and Edge.
 
 ## Setup
 Please see the [Setup](https://github.com/269Seahorse/Better-taiko-web/wiki/Setup) page for setup instructions.
+
+
+## PORT
+
+- app:app
+  - 3000
+- nginx
+  - 80

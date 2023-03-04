@@ -18,8 +18,14 @@ from ffmpy import FFmpeg
 from pymongo import MongoClient
 from redis import Redis
 
+from static_src import static_src
+from static_assets import static_assets
+
 app = Flask(__name__)
 client = MongoClient(host=config.MONGO['host'])
+
+app.register_blueprint(static_src, url_prefix="/src")
+app.register_blueprint(static_assets, url_prefix="/assets")
 
 app.secret_key = config.SECRET_KEY
 app.config['SESSION_TYPE'] = 'redis'
@@ -148,6 +154,7 @@ def get_version():
     if os.path.isfile('version.json'):
         try:
             ver = json.load(open('version.json', 'r'))
+            print("try to open veriosn.json")
         except ValueError:
             print('Invalid version.json file')
             return version
